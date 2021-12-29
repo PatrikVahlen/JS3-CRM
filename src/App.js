@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React, { useState, createContext } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import CompanyPage from './pages/CompanyPage';
 import HomePage from './pages/HomePage';
@@ -8,13 +8,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 import DetailPage from './pages/DetailPage';
 
-const SelectionContext = createContext({})
+const UserInformation = createContext({})
 
 function App() {
+  const [userFirstName, setUserFirstName] = useState("")
+  const [companyList, setCompanyList] = useState(null)
   return (
 
     <>
-      <SelectionContext.Provider>
+      <UserInformation.Provider value={{ userFirstName, setUserFirstName, companyList, setCompanyList }}>
         <header className='App-header'>
           <Routes>
             <Route path="/" element={<LoginPage />} />
@@ -25,11 +27,10 @@ function App() {
             <Route path="/:id" element={<DetailPage />} />
           </Routes>
         </header>
-      </SelectionContext.Provider>
+      </UserInformation.Provider>
     </>
   );
 }
 
-
-export { SelectionContext }
+export { UserInformation }
 export default App;

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom"
+import { UserInformation } from '../App'
 
 export default function Detail(props) {
     const [detail, setDetail] = useState({})
     const [name, setName] = useState("")
+    const { companyList, setCompanyList } = useContext(UserInformation)
 
     useEffect(() => {
         const url = `https://frebi.willandskill.eu/api/v1/customers/${props.id}/`
@@ -23,7 +25,6 @@ export default function Detail(props) {
 
     function handleOnSubmit(e) {
         e.preventDefault();
-        console.log("HEj")
         const url = `https://frebi.willandskill.eu/api/v1/customers/${props.id}/`
         const token = localStorage.getItem("webb21inl")
         const payload = { name }
@@ -44,7 +45,7 @@ export default function Detail(props) {
 
     return (
         <div>
-            {/* {console.log(detail.email)} */}
+            {console.log(companyList)}
             <form onSubmit={handleOnSubmit}>
                 <input
                     value={name}

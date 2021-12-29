@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import React, { useState, useContext } from 'react'
+import { Link, useNavigate } from "react-router-dom"
+import MyButton from '../components/MyButton'
+import { UserInformation } from '../App'
 
 export default function CompanyPage() {
+    const { userFirstName, setUserFirstName } = useContext(UserInformation)
+    const navigate = useNavigate()
     const [name, setName] = useState(null)
     const [organisationNr, setOrgNr] = useState(null)
     const [vatNr, setVatNr] = useState(null)
@@ -35,12 +39,16 @@ export default function CompanyPage() {
             body: JSON.stringify(payload)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                navigate('/list')
+            })
     }
 
     return (
         <div>
-            CompanyPage
+            Welcome: {userFirstName} to CompanyPage
+            {console.log(userFirstName)}
             <form onSubmit={handleOnSubmit}>
                 <input
                     type="text"
@@ -98,7 +106,8 @@ export default function CompanyPage() {
                     placeholder="Phonernumber"
                 />
                 <br />
-                <button type="submit">Submit</button>
+                <MyButton type="submit">Submit</MyButton>
+                {/* <button type="submit">Submit</button> */}
             </form>
             <Link to="/mypage">Home</Link>
             <br />

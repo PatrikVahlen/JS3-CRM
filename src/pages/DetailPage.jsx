@@ -7,7 +7,6 @@ export default function DetailPage() {
     return (
         <div>
             <Detail id={params.id} />
-            {/* {console.log(params.id)} */}
         </div>
     )
 }
