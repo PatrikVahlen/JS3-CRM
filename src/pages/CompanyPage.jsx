@@ -4,7 +4,7 @@ import MyButton from '../components/MyButton'
 import { UserInformation } from '../App'
 
 export default function CompanyPage() {
-    const { userFirstName, setUserFirstName } = useContext(UserInformation)
+    const { userInformation, setUserInformation } = useContext(UserInformation)
     const navigate = useNavigate()
     const [name, setName] = useState(null)
     const [organisationNr, setOrgNr] = useState(null)
@@ -70,8 +70,7 @@ export default function CompanyPage() {
 
     return (
         <div>
-            Welcome: {userFirstName} to CompanyPage
-            {console.log(userFirstName)}
+            Welcome: {userInformation.firstName} {userInformation.lastName} to CompanyPage
             <form onSubmit={handleOnSubmit}>
                 <input
                     type="text"
@@ -136,7 +135,7 @@ export default function CompanyPage() {
             <Link to="/mypage">Home</Link>
             <br />
             <Link to="/list">View Customers</Link>
-            
+
         </div>
     )
 }

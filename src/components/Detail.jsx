@@ -27,6 +27,7 @@ export default function Detail(props) {
     function handleOnSubmit(e) {
         e.preventDefault();
         const url = `https://frebi.willandskill.eu/api/v1/customers/${props.id}/`
+        // const url = `https://frebi.willandskill.eu/api/v1/customers/${companyList[props.id]}/`
         const token = localStorage.getItem("webb21inl")
         const payload = { name }
         fetch(url, {
@@ -47,8 +48,8 @@ export default function Detail(props) {
     return (
         <div>
 
-            {console.log(props.id)}
-            {console.log(companyList[props.id])}
+            {/* {console.log(props.id)}
+            {console.log(companyList[props.id])} */}
             {/* {console.log(detail)} */}
             <form onSubmit={handleOnSubmit}>
                 <input

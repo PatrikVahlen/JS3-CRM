@@ -14,12 +14,12 @@ import LoginUserPage from './pages/LoginUserPage';
 const UserInformation = createContext({})
 
 function App() {
-  const [userFirstName, setUserFirstName] = useState("")
+  const [userInformation, setUserInformation] = useState(null)
   const [companyList, setCompanyList] = useState(null)
   return (
 
     <>
-      <UserInformation.Provider value={{ userFirstName, setUserFirstName, companyList, setCompanyList }}>
+      <UserInformation.Provider value={{ userInformation, setUserInformation, companyList, setCompanyList }}>
         <header className='App-header'>
           <Routes>
             <Route path="/" element={<CreateUserPage />} />

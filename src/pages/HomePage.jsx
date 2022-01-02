@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Link } from "react-router-dom"
-import MyButton from '../components/MyButton'
 import { UserInformation } from '../App'
 
 // const UserInformation = createContext({})
 
 export default function MyPage() {
-    const { userFirstName, setUserFirstName } = useContext(UserInformation)
-    const { companyList, setCompanyList } = useContext(UserInformation)
+    const { userInformation, setUserInformation } = useContext(UserInformation)
+    // const { companyList, setCompanyList } = useContext(UserInformation)
     const [myData, setMyData] = useState(null)
     // const [userFirstName, setUserFirstName] = useState("Pelle")
 
@@ -23,6 +22,7 @@ export default function MyPage() {
             .then(res => res.json())
             .then(data => {
                 setMyData(data)
+                setUserInformation(data)
             })
 
     }, [])
@@ -30,11 +30,11 @@ export default function MyPage() {
     return (
         // <UserInformation.Provider value={{ userFirstName, setUserFirstName }}>
         <div>
-            {console.log(companyList)}
+            {/* {console.log(companyList)} */}
             {myData && (
                 <>
                     {/* {console.log(userFirstName)} */}
-                    {setUserFirstName(myData.firstName)}
+                    {/* {setUserFirstName(myData.firstName)} */}
                     <h2>Welcome: {myData.firstName} {myData.lastName}</h2>
                     <p>Email: {myData.email}</p>
                     {/* <p>Latest added company: {companyList[0].name}</p> */}
@@ -45,7 +45,8 @@ export default function MyPage() {
                     <br />
                     <Link to="/">Create new user</Link>
                     <br />
-                    <MyButton>TEST</MyButton>
+                    <Link to="/userlogin">Log in with another user</Link>
+                    <br />
                 </>
             )}
 
