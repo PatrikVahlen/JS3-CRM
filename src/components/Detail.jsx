@@ -6,6 +6,7 @@ import MyButton from './MyButton'
 export default function Detail(props) {
     const [detail, setDetail] = useState({})
     const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     const { companyList, setCompanyList } = useContext(UserInformation)
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export default function Detail(props) {
             .then(data => {
                 setDetail(data)
                 setName(data.name)
+                setEmail(data.email)
             })
     }, [])
 
@@ -29,7 +31,7 @@ export default function Detail(props) {
         const url = `https://frebi.willandskill.eu/api/v1/customers/${props.id}/`
         // const url = `https://frebi.willandskill.eu/api/v1/customers/${companyList[props.id]}/`
         const token = localStorage.getItem("webb21inl")
-        const payload = { name }
+        const payload = { name, email }
         fetch(url, {
             method: "PATCH",
             headers: {
@@ -42,6 +44,7 @@ export default function Detail(props) {
             .then(data => {
                 setDetail(data)
                 setName(data.name)
+                setEmail(data.email)
             })
     }
 
@@ -57,6 +60,12 @@ export default function Detail(props) {
                     onChange={e => setName(e.target.value)}
                 />
                 <MyButton type="submit">Update Name</MyButton>
+                <br />
+                <input
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <MyButton type="submit">Update Email</MyButton>
                 {/* <button type="submit">Update Name</button> */}
             </form>
             {/* <p>{companyList[props.id].name}</p>

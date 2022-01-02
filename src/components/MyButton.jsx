@@ -8,10 +8,16 @@ const Button = styled.button`
   color: white;
 `
 
+const BigButton = styled(Button)`
+  font-size: 50px;
+`
+
 export default function MyButton(props) {
     return (
         <>
-            <Button>{props.children}</Button>
+            {props.big ?
+                <BigButton>{props.children}</BigButton> : <Button>{props.children}</Button>
+            }
         </>
     )
 }

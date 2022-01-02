@@ -129,7 +129,7 @@ export default function CompanyPage() {
                     placeholder="Phonernumber"
                 />
                 <br />
-                <MyButton type="submit">Submit</MyButton>
+                <MyButton type="submit">Create Customer</MyButton>
                 {/* <button type="submit">Submit</button> */}
             </form>
             <Link to="/mypage">Home</Link>
