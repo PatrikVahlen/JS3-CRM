@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom"
 import { UserInformation } from '../App'
+import MyButton from './MyButton'
 
 export default function Detail(props) {
     const [detail, setDetail] = useState({})
@@ -45,14 +46,27 @@ export default function Detail(props) {
 
     return (
         <div>
-            {console.log(companyList)}
+
+            {console.log(props.id)}
+            {console.log(companyList[props.id])}
+            {/* {console.log(detail)} */}
             <form onSubmit={handleOnSubmit}>
                 <input
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
-                <button type="submit">Update Name</button>
+                <MyButton type="submit">Update Name</MyButton>
+                {/* <button type="submit">Update Name</button> */}
             </form>
+            {/* <p>{companyList[props.id].name}</p>
+            <p>{companyList[props.id].email}</p>
+            <p>{companyList[props.id].organisationNr}</p>
+            <p>{companyList[props.id].paymentTerm}</p>
+            <p>{companyList[props.id].phoneNumber}</p>
+            <p>{companyList[props.id].reference}</p>
+            <p>{companyList[props.id].vatNr}</p>
+            <p>{companyList[props.id].website}</p>
+            <p>{companyList[props.id].id}</p> */}
             {detail ? (
                 <>
                     <h2>{detail.name}</h2>

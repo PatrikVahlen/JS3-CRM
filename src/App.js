@@ -7,6 +7,9 @@ import LoginPage from './pages/LoginPage';
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 import DetailPage from './pages/DetailPage';
+import LatestAddedPage from './pages/LatestAddedPage';
+import CreateUserPage from './pages/CreateUserPage';
+import LoginUserPage from './pages/LoginUserPage';
 
 const UserInformation = createContext({})
 
@@ -19,12 +22,14 @@ function App() {
       <UserInformation.Provider value={{ userFirstName, setUserFirstName, companyList, setCompanyList }}>
         <header className='App-header'>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<CreateUserPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/home" element={<CompanyPage />} />
             <Route path="/mypage" element={<HomePage />} />
             <Route path="/list" element={<ListCompanyPage />} />
             <Route path="/:id" element={<DetailPage />} />
+            <Route path="/latest" element={<LatestAddedPage />} />
+            <Route path="/userlogin" element={<LoginUserPage />} />
           </Routes>
         </header>
       </UserInformation.Provider>

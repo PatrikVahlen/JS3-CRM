@@ -7,6 +7,7 @@ export default function DetailPage() {
     return (
         <div>
             <Detail id={params.id} />
+            {/* <Detail index={params.index} /> */}
         </div>
     )
 }

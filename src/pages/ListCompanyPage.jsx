@@ -24,6 +24,7 @@ export default function PostListPage() {
             .then((data) => {
                 setPostList(data.results)
                 setCompanyList(data.results)
+                // console.log(data.results)
             });
     }
 
@@ -59,10 +60,11 @@ export default function PostListPage() {
 
     return (
         <div>
-            {postList && postList.map(item => {
+            {postList && postList.map((item, index) => {
                 return (
                     <div key={item.id}>
                         {/* {console.log(companyList)} */}
+                        {/* <p><Link to={`/${item.id}`} key={item.id}>{item.name}</Link></p> */}
                         <p><Link to={`/${item.id}`} key={item.id}>{item.name}</Link></p>
                         {/* <p>{item.name}</p>
                         <p>{item.email}</p>
@@ -75,13 +77,16 @@ export default function PostListPage() {
                         <p>{item.id}</p> */}
                         <button className='btn btn-primary' onClick={(e) => handleOnDelete(item.id)}>Delete</button>
                         {/* onClick={(e) => handleOnDelete(item.id)} */}
-                        <hr />
-                        <Link to="/mypage">Home</Link>
-                        <br />
-                        <Link to="/home">Create new Customer</Link>
+
                     </div>
                 )
             })}
+            <hr />
+            <Link to="/mypage">Home</Link>
+            <br />
+            <Link to="/home">Create new Customer</Link>
+            <br />
+            <Link to="/latest">Latest Added Company</Link>
         </div>
     )
 }

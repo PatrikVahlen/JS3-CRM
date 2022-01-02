@@ -14,9 +14,32 @@ export default function CompanyPage() {
     const [website, setWebsite] = useState(null)
     const [email, setEmail] = useState(null)
     const [phoneNumber, setPhoneNumber] = useState(null)
+    const [isValid, setIsValid] = useState(true)
+    const [validVatNrText, setValidVatNrText] = useState("Valid VatNr")
 
     function handleOnSubmit(e) {
         e.preventDefault()
+        if (vatNr.length !== 12) {
+            setIsValid(false);
+            setValidVatNrText("Not VatNr")
+            console.log(isValid);
+            console.log("Fel Storlek")
+            return;
+        }
+        if (vatNr[0] + vatNr[1] !== "SE") {
+            setIsValid(false);
+            setValidVatNrText("Not VatNr")
+            console.log("Börja med SE")
+            return;
+        }
+        for (let i = 2; i < vatNr.length; i++) {
+            if (isNaN(vatNr[i])) {
+                console.log("Inte ett nummer")
+                setValidVatNrText("Not VatNr")
+                setIsValid(false);
+                return;
+            }
+        }
         const url = "https://frebi.willandskill.eu/api/v1/customers/"
         const payload = {
             name,
@@ -64,6 +87,7 @@ export default function CompanyPage() {
                     placeholder="OrganisationNr"
                 />
                 <br />
+                <label style={{ color: !isValid ? 'red' : 'white' }}>{validVatNrText}</label>
                 <input
                     type="text"
                     value={vatNr}
@@ -111,7 +135,8 @@ export default function CompanyPage() {
             </form>
             <Link to="/mypage">Home</Link>
             <br />
-            <Link to="/list">Veiw Customers</Link>
+            <Link to="/list">View Customers</Link>
+            
         </div>
     )
 }

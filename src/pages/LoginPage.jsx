@@ -1,53 +1,52 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link, useLocation } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
-import './LoginPage.css';
 
 
 export default function LoginPage() {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    let location = useLocation();
+    let searchParams = new URLSearchParams(location.search);
+    let [uid, setUID] = useState("");
+    let [token, setToken] = useState("");
+    const [response, setResponse] = useState(null)
     const navigate = useNavigate()
 
-    function handleOnSubmit(e) {
-        e.preventDefault()
-        const url = "https://frebi.willandskill.eu/api-token-auth/"
-        const payload = { email, password }
+    useEffect(() => {
+        setUID(searchParams.get('uid'))
+        setToken(searchParams.get('token'))
+    });
+
+    function handleOnClick() {
+        const url = "https://frebi.willandskill.eu/auth/users/activate"
+        const payload = {
+            uid,
+            token,
+        }
         fetch(url, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload),
         })
             .then(res => res.json())
-            .then(data => {
-                const token = data.token
-                localStorage.setItem("webb21inl", token)
-                navigate('/mypage')
-            })
+            .then(data => setResponse(data))
+        console.log("HÄR")
+        navigate('/userlogin')
     }
 
     return (
-        <div className='login'>
-            Login
-            <form onSubmit={handleOnSubmit}>
-                <input
-                    type="text"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="Email"
-                />
-                <br />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    placeholder="Password"
-                />
-                <br />
-                <button className='btn btn-primary' type="submit">Login</button>
-            </form>
+        <div>
+            LOGIN
+            <button onClick={handleOnClick}>Verify</button>
+            {/* {console.log(location.pathname)}
+            {console.log(location.search)} */}
+            {console.log("HEJ")}
+            {console.log("DÅÅ")}
+            {console.log(uid)}
+            {console.log(token)}
+            <Link to="/">Create User</Link>
         </div>
     )
 }

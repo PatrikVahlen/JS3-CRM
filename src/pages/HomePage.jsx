@@ -7,6 +7,7 @@ import { UserInformation } from '../App'
 
 export default function MyPage() {
     const { userFirstName, setUserFirstName } = useContext(UserInformation)
+    const { companyList, setCompanyList } = useContext(UserInformation)
     const [myData, setMyData] = useState(null)
     // const [userFirstName, setUserFirstName] = useState("Pelle")
 
@@ -29,16 +30,20 @@ export default function MyPage() {
     return (
         // <UserInformation.Provider value={{ userFirstName, setUserFirstName }}>
         <div>
+            {console.log(companyList)}
             {myData && (
                 <>
                     {/* {console.log(userFirstName)} */}
                     {setUserFirstName(myData.firstName)}
                     <h2>Welcome: {myData.firstName} {myData.lastName}</h2>
                     <p>Email: {myData.email}</p>
+                    {/* <p>Latest added company: {companyList[0].name}</p> */}
                     <p>What do you want to do?</p>
                     <Link to="/home">Create new Customer</Link>
                     <br />
                     <Link to="/list">View Customers</Link>
+                    <br />
+                    <Link to="/">Create new user</Link>
                     <br />
                     <MyButton>TEST</MyButton>
                 </>
