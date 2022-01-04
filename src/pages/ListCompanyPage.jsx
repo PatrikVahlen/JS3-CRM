@@ -28,21 +28,6 @@ export default function PostListPage() {
             });
     }
 
-    // useEffect(() => {
-    //     const url = 'https://frebi.willandskill.eu/api/v1/customers/'
-    //     const token = localStorage.getItem('webb21inl')
-    //     fetch(url, {
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setPostList(data.results)
-    //         })
-    // }, [])
-
     function handleOnDelete(id) {
         console.log(id)
         const url = `https://frebi.willandskill.eu/api/v1/customers/${id}/`;
@@ -64,7 +49,7 @@ export default function PostListPage() {
                 return (
                     <div key={item.id}>
                         {/* {console.log(companyList)} */}
-                        {/* <p><Link to={`/${item.id}`} key={item.id}>{item.name}</Link></p> */}
+                        {/* <p><Link to={`/${index.id}`} key={item.id}>{item.name}</Link></p> */}
                         <p><Link to={`/${item.id}`} key={item.id}>{item.name}</Link></p>
                         {/* <p>{item.name}</p>
                         <p>{item.email}</p>

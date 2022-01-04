@@ -59,13 +59,13 @@ export default function Detail(props) {
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
-                <MyButton type="submit">Update Name</MyButton>
+                <MyButton type="submit">Update Info</MyButton>
                 <br />
                 <input
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
-                <MyButton type="submit">Update Email</MyButton>
+                {/* <MyButton type="submit">Update Email</MyButton> */}
                 {/* <button type="submit">Update Name</button> */}
             </form>
             {/* <p>{companyList[props.id].name}</p>
