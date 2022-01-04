@@ -49,17 +49,8 @@ export default function PostListPage() {
                 return (
                     <div key={item.id}>
                         {/* {console.log(companyList)} */}
-                        {/* <p><Link to={`/${index.id}`} key={item.id}>{item.name}</Link></p> */}
+                        {/* <p><Link to={`/${index}`} key={item.id}>{item.name}</Link></p> */}
                         <p><Link to={`/${item.id}`} key={item.id}>{item.name}</Link></p>
-                        {/* <p>{item.name}</p>
-                        <p>{item.email}</p>
-                        <p>{item.organisationNr}</p>
-                        <p>{item.paymentTerm}</p>
-                        <p>{item.phoneNumber}</p>
-                        <p>{item.reference}</p>
-                        <p>{item.vatNr}</p>
-                        <p>{item.website}</p>
-                        <p>{item.id}</p> */}
                         <button className='btn btn-primary' onClick={(e) => handleOnDelete(item.id)}>Delete</button>
                         {/* onClick={(e) => handleOnDelete(item.id)} */}
 

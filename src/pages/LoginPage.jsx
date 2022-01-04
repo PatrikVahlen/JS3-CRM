@@ -38,6 +38,7 @@ export default function LoginPage() {
 
     return (
         <div>
+            {console.log(location)}
             <p>Verify your account:</p>
             <button onClick={handleOnClick}>Verify</button>
             {console.log("HEJ")}

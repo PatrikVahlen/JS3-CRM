@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom"
 import { UserInformation } from '../App'
+import Card from './Card'
 import MyButton from './MyButton'
 
 export default function Detail(props) {
@@ -29,7 +30,7 @@ export default function Detail(props) {
     function handleOnSubmit(e) {
         e.preventDefault();
         const url = `https://frebi.willandskill.eu/api/v1/customers/${props.id}/`
-        // const url = `https://frebi.willandskill.eu/api/v1/customers/${companyList[props.id]}/`
+        // const url = `https://frebi.willandskill.eu/api/v1/customers/${companyList[props.id].id}/`
         const token = localStorage.getItem("webb21inl")
         const payload = { name, email }
         fetch(url, {
@@ -68,27 +69,29 @@ export default function Detail(props) {
                 {/* <MyButton type="submit">Update Email</MyButton> */}
                 {/* <button type="submit">Update Name</button> */}
             </form>
-            {/* <p>{companyList[props.id].name}</p>
-            <p>{companyList[props.id].email}</p>
-            <p>{companyList[props.id].organisationNr}</p>
-            <p>{companyList[props.id].paymentTerm}</p>
-            <p>{companyList[props.id].phoneNumber}</p>
-            <p>{companyList[props.id].reference}</p>
-            <p>{companyList[props.id].vatNr}</p>
-            <p>{companyList[props.id].website}</p>
-            <p>{companyList[props.id].id}</p> */}
+            {/* <Card>
+                <p>Name: {companyList[props.id].name}</p>
+                <p>Email: {companyList[props.id].email}</p>
+                <p>Org Nr: {companyList[props.id].organisationNr}</p>
+                <p>{companyList[props.id].paymentTerm}</p>
+                <p>{companyList[props.id].phoneNumber}</p>
+                <p>{companyList[props.id].reference}</p>
+                <p>{companyList[props.id].vatNr}</p>
+                <p>{companyList[props.id].website}</p>
+                <p>{companyList[props.id].id}</p>
+            </Card> */}
             {detail ? (
-                <>
-                    <h2>{detail.name}</h2>
-                    <p>{detail.email}</p>
-                    <p>{detail.organisationNr}</p>
-                    <p>{detail.paymentTerm}</p>
-                    <p>{detail.phoneNumber}</p>
-                    <p>{detail.reference}</p>
-                    <p>{detail.vatNr}</p>
-                    <p>{detail.website}</p>
-                    <p>{detail.id}</p>
-                </>
+                <Card>
+                    <h2>Name: {detail.name}</h2>
+                    <p>Email: {detail.email}</p>
+                    <p>Org nr: {detail.organisationNr}</p>
+                    <p>Payment: {detail.paymentTerm}</p>
+                    <p>Phone Nr: {detail.phoneNumber}</p>
+                    <p>Reference: {detail.reference}</p>
+                    <p>VatNr: {detail.vatNr}</p>
+                    <p>Website: {detail.website}</p>
+                    <p>Id: {detail.id}</p>
+                </Card>
             ) : "Not Found"}
             <Link to="/list">Back to List</Link>
         </div>

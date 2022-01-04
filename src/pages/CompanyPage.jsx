@@ -15,7 +15,7 @@ export default function CompanyPage() {
     const [email, setEmail] = useState(null)
     const [phoneNumber, setPhoneNumber] = useState(null)
     const [isValid, setIsValid] = useState(true)
-    const [validVatNrText, setValidVatNrText] = useState("Valid VatNr")
+    const [validVatNrText, setValidVatNrText] = useState("")
 
     function handleOnSubmit(e) {
         e.preventDefault()
